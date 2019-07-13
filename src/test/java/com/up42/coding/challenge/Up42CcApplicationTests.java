@@ -34,11 +34,6 @@ public class Up42CcApplicationTests {
 	@MockBean
 	private FeatureService featureService;
 
-	@Test
-	public void contextLoads() {
-
-	}
-
 	FeatureDef fakeFeatureDef = new FeatureDef("0b598c52-7bf2-4df0-9d09-94229cdfbc0b", "Sentinel-1A", 1560661222337l,
 			1560661222337l, 1560661247336l);
 
