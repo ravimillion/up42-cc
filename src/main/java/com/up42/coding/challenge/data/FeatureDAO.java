@@ -23,6 +23,11 @@ public class FeatureDAO implements IFeatureDAO {
 		// auto load data on startup
 		loadJSONData();
 	}
+
+	/*
+	 * This function actually should be fetching data from a database service. 
+	 * This class is only a Data Access Object hence fetching data from static provided json file.
+	 */
 	public void loadJSONData() {		
 		ObjectMapper mapper = new ObjectMapper();
 		TypeReference<List<FeatureCollection>> typeReference = new TypeReference<List<FeatureCollection>>() {};
