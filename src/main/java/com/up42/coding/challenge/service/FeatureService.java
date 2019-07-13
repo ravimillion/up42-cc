@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.up42.coding.challenge.exception.ExceptionNotFound;
 import com.up42.coding.challenge.interfaces.IFeature;
 import com.up42.coding.challenge.interfaces.IFeatureDAO;
 import com.up42.coding.challenge.interfaces.IFeatureDef;
@@ -29,14 +30,21 @@ public class FeatureService implements IFeatureService {
 	}
 
 	@Override
-	public FeatureDef getFeature(String id) {		
-		// TODO throw exception
-		return null;
+	public FeatureDef getFeature(String id) {
+		List<IFeature> features = featureDAO.getAllFeatures();
+		for (IFeature f : features) {
+			if (f.getId().equals(id)) {
+				return new FeatureDef(f.getId(), f.getMissionName(), f.getTimestamp(), f.getBeginViewingDate(),
+						f.getEndViewingDate());
+			}
+		}
+
+		throw new ExceptionNotFound(ExceptionNotFound.MSG_FEATURE_NO_QUICKLOOK);
 	}
 
 	@Override
-	public byte[] getFeatureQuicklook(String id) {		
+	public byte[] getFeatureQuicklook(String id) {
 		// TODO throw exception
-		return null;		
+		return null;
 	}
 }
