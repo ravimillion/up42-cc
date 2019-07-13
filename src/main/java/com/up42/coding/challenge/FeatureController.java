@@ -27,4 +27,10 @@ public class FeatureController {
 	public FeatureDef getFeature(@PathVariable String id) {
 		return featureService.getFeature(id);
 	}
+
+	@GetMapping(path = "/features/{id}/quicklook", produces = { MediaType.IMAGE_PNG_VALUE })
+	public ResponseEntity<byte[]> getFeatureQuicklook(@PathVariable String id) {
+		byte[] imageData = featureService.getFeatureQuicklook(id);
+		return ResponseEntity.ok().body(imageData);
+	}
 }

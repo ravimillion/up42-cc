@@ -38,13 +38,21 @@ public class FeatureService implements IFeatureService {
 						f.getEndViewingDate());
 			}
 		}
-
-		throw new ExceptionNotFound(ExceptionNotFound.MSG_FEATURE_NO_QUICKLOOK);
+		
+		throw new ExceptionNotFound(ExceptionNotFound.MSG_FEATURE_NOT_FOUND);		
 	}
 
 	@Override
 	public byte[] getFeatureQuicklook(String id) {
-		// TODO throw exception
-		return null;
+		List<IFeature> features = featureDAO.getAllFeatures();
+		String base64Data = null;
+		for (IFeature f : features) {
+			if (f.getId().equals(id)) {
+				base64Data = f.getQuicklook();
+				return Base64.getDecoder().decode(base64Data);				
+			}
+		}
+
+		throw new ExceptionNotFound(ExceptionNotFound.MSG_FEATURE_NO_QUICKLOOK);
 	}
 }
