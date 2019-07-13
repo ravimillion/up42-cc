@@ -1,0 +1,18 @@
+The App implements 3 web services
+/features
+/features/{id}
+/features/{id}/quicklook
+
+These web services follow the rules of Richardson Maturity Model and hence follow the best practices. 
+
+Instructions to package the App. 
+
+1. From the top level directory of the project execute
+mvn clean package
+
+2. Step 1 should generate a jar file in the target directory. To run this jar file execute: 
+java -jar UP42-CC-0.0.1.jar
+
+3. When the server is started, open a browser and write the following URL in the address bar: 
+ http://localhost:8080/features
+ 
