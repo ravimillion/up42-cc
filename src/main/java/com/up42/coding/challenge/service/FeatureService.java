@@ -49,7 +49,7 @@ public class FeatureService implements IFeatureService {
 		for (IFeature f : features) {
 			if (f.getId().equals(id)) {
 				base64Data = f.getQuicklook();
-				return Base64.getDecoder().decode(base64Data);				
+				if (base64Data != null) return Base64.getDecoder().decode(base64Data);				
 			}
 		}
 
