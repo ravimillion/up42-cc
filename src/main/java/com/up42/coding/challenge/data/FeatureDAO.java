@@ -24,10 +24,7 @@ public class FeatureDAO implements IFeatureDAO {
 		TypeReference<List<FeatureCollection>> typeReference = new TypeReference<List<FeatureCollection>>() {};
 		InputStream inputStream = TypeReference.class.getResourceAsStream(JSON_DATA_FILE);
 		try {
-			featureCollection = mapper.readValue(inputStream, typeReference);
-			for (FeatureCollection f: featureCollection) {
-				System.out.println(f);
-			}
+			featureCollection = mapper.readValue(inputStream, typeReference);			
 		} catch (IOException e) {
 			System.out.println("Unable to parse json data: " + e.getMessage());
 		}		
@@ -40,8 +37,7 @@ public class FeatureDAO implements IFeatureDAO {
 		for (IFeatureCollection featureCollection: featureCollection) {
 			IFeature[] features = featureCollection.getFeatures();
 			for (IFeature feature: features) {
-				featureList.add(feature);
-				System.out.println(feature);
+				featureList.add(feature);				
 			}
 		}
 		
