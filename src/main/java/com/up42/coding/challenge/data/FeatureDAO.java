@@ -19,6 +19,10 @@ public class FeatureDAO implements IFeatureDAO {
 	private List<FeatureCollection> featureCollection;
 	private String JSON_DATA_FILE = "/static/source-data.json";
 
+	public FeatureDAO() {
+		// auto load data on startup
+		loadJSONData();
+	}
 	public void loadJSONData() {		
 		ObjectMapper mapper = new ObjectMapper();
 		TypeReference<List<FeatureCollection>> typeReference = new TypeReference<List<FeatureCollection>>() {};
